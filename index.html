@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="House of J&S Computer Training Center — student learning portal for Scratch 3.0, from beginner to advanced.">
+<title>Student Portal | Scratch 3.0 Academy · House of J&S</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+window.hjsStoreKey = function(key) {
+  const student = (sessionStorage.getItem('hjsStudentName') || 'guest').trim().toLocaleLowerCase().replace(/\s+/g, ' ');
+  return 'hjs_' + encodeURIComponent(student) + '_' + key;
+};
+</script>
+</head>
+<body>
+<section class="auth-shell" id="authGate" aria-label="Student login">
+ <div class="auth-showcase">
+  <div class="auth-showcase-top"><img src="assets/logo.png" alt="House of J&S logo"><div><strong>HOUSE OF J&amp;S</strong><span>COMPUTER TRAINING CENTER</span></div></div>
+  <div class="auth-copy">
+   <span class="auth-kicker">CREATIVITY STARTS HERE</span>
+   <h1>Learn to code.<br><em>Create your world.</em></h1>
+   <p>Welcome to your Scratch 3.0 learning space. Explore coding lessons, build games, draw with code and grow your programming skills step by step.</p>
+   <div class="auth-feature-list"><span><i>✦</i> 38 guided lessons · Basic to Advanced</span><span><i>✦</i> Shape drawing and mini game projects</span><span><i>✦</i> 15 topic-based examination sets</span></div>
+  </div>
+  <div class="auth-code-art" aria-hidden="true"><div class="auth-orbit orbit-a"></div><div class="auth-orbit orbit-b"></div><div class="auth-code-window"><div class="auth-window-bar"><b></b><b></b><b></b><span>SCRATCH BLOCKS</span></div><div class="auth-block block-event">when green flag clicked</div><div class="auth-block block-control">repeat <strong>10</strong></div><div class="auth-block block-motion">move <strong>10</strong> steps</div><div class="auth-block block-looks">say <strong>Hello!</strong></div><div class="auth-window-foot">IMAGINE · BUILD · PLAY</div></div><span class="auth-spark spark-one">✧</span><span class="auth-spark spark-two">{ }</span></div>
+  <div class="auth-showcase-foot"><span>ENGLISH + MYANMAR LEARNING</span><span>EST. HOUSE OF J&amp;S</span></div>
+ </div>
+ <div class="auth-panel-wrap">
+  <div class="auth-panel">
+   <div class="auth-mobile-brand"><img src="assets/logo.png" alt="House of J&S logo"><span>HOUSE OF J&amp;S</span></div>
+   <span class="auth-overline">STUDENT PORTAL</span>
+   <h2>Welcome back</h2>
+   <p class="auth-intro">Sign in with your student name to continue learning.</p>
+   <form id="studentLoginForm" class="auth-form" autocomplete="on" novalidate>
+    <label for="studentNameInput">Student name <span>ကျောင်းသားအမည်</span></label>
+    <div class="auth-input-wrap"><span class="auth-input-icon">♙</span><input id="studentNameInput" name="studentName" type="text" placeholder="Enter your full name" autocomplete="name" maxlength="60" required></div>
+    <label for="studentPasswordInput">Password <span>စကားဝှက်</span></label>
+    <div class="auth-input-wrap"><span class="auth-input-icon">▣</span><input id="studentPasswordInput" name="password" type="password" placeholder="Enter your course password" autocomplete="current-password" required><button class="password-toggle" type="button" id="togglePassword" aria-label="Show password">Show</button></div>
+    <div class="auth-hint"><span>✦</span><span>Course access password is provided by House of J&amp;S.</span></div>
+    <p class="auth-error" id="loginError" role="alert" aria-live="polite"></p>
+    <button class="auth-submit" type="submit">Enter Learning Portal <span>→</span></button>
+   </form>
+   <div class="auth-secure-note"><span>◈</span> HOUSE OF J&amp;S · SCRATCH 3.0 ACADEMY</div>
+   <div class="auth-login-bottom">Need help signing in? Contact your course teacher.</div>
+  </div>
+ </div>
+</section>
+<div class="app-shell" id="appShell">
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><img src="assets/logo.png" alt="House of J&S logo"><div><b>HOUSE OF J&S</b><small>COMPUTER TRAINING CENTER</small></div><button class="close-nav" id="closeNav" aria-label="Close menu">×</button></div>
+ <div class="course-label">SCRATCH 3.0 ACADEMY</div>
+ <nav class="sidebar-primary-nav" aria-label="Main navigation">
+  <button class="nav-item primary-side-link active" id="dashboardNav" data-view="dashboard"><span class="side-link-icon">⌂</span><span>Dashboard</span></button>
+  <button class="nav-item primary-side-link" id="courseNav" data-view="course"><span class="side-link-icon">▤</span><span>Course Lessons</span></button>
+  <button class="nav-item primary-side-link" id="practiceNav" data-view="practice"><span class="side-link-icon">✦</span><span>Practice Studio</span></button>
+  <button class="nav-item primary-side-link exam-nav" id="examNav" data-view="exams"><span class="side-link-icon">🏆</span><span>Exams & Assessments</span></button>
+ </nav>
+ <div class="lesson-nav-label">LEARNING PATH · 38 LESSONS</div>
+ <nav id="lessonNav" aria-label="Course lessons"></nav>
+ <div class="sidebar-bottom"><div class="mini-progress"><div class="progress-line"><span id="sideProgress"></span></div><small><span id="sideDone">0</span> / 38 lessons completed</small></div><a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener">↗ Open Scratch Editor</a></div>
+</aside>
+<div class="scrim" id="scrim"></div>
+<main class="main">
+<header class="topbar"><button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button><div class="crumb"><span class="crumb-muted">STUDENT WORKSPACE</span><span class="crumb-sep">/</span><b>Scratch 3.0 Academy</b></div><div class="top-actions"><div class="student-profile"><span class="profile-avatar" id="profileInitial">S</span><span class="profile-meta"><small>WELCOME BACK</small><b id="studentNameBadge">Student</b></span></div><button class="lang-btn" id="langBtn">မြန်မာ</button><a class="editor-link" href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener">Open Scratch Editor ↗</a><button class="logout-btn" id="logoutBtn" type="button" title="Sign out">Sign out</button></div></header>
+<section class="hero" id="homeHero"><div class="hero-copy"><div class="eyebrow">YOUR CREATIVE CODING JOURNEY</div><div class="hero-welcome" id="heroWelcome">WELCOME TO YOUR CLASSROOM</div><h1>Imagine it.<br><em>Code it.</em> Share it.</h1><p>Build confidence with guided lessons, creative drawing challenges, mini games and topic-based exams — from your first block to advanced Scratch projects.</p><div class="hero-buttons"><button class="primary-btn" id="startBtn">Start Learning <span>→</span></button><button type="button" class="text-link text-link-button" id="exploreCourseLink">Explore curriculum</button></div><div class="hero-meta"><span>38 guided lessons</span><span>15 exam sets</span><span>English + Myanmar</span></div></div><div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="scratch-card"><div class="scratch-head"><span class="dot"></span><b>Scratch Blocks</b><span class="tiny-cat">🐱</span></div><div class="fake-block yellow">when green flag clicked</div><div class="fake-block blue">move <strong>10</strong> steps</div><div class="fake-block purple">say <strong>Hello!</strong> for <strong>2</strong> seconds</div><div class="fake-block orange">repeat <strong>10</strong></div><div class="floating f1">✦</div><div class="floating f2">{ }</div></div><div class="hero-cat">🐱</div></div></section>
+<section class="stats-grid" id="statsGrid"><article><span class="stat-icon gold">▤</span><div><b>38</b><small>Step-by-step lessons</small></div></article><article><span class="stat-icon blue">▦</span><div><b>5</b><small>Learning levels</small></div></article><article><span class="stat-icon purple">◇</span><div><b>8+</b><small>Practical projects</small></div></article><article><span class="stat-icon green">✓</span><div><b id="completedStat">0%</b><small>Your progress</small></div></article></section>
+<section class="content-section" id="curriculum"><div class="section-heading"><div><div class="eyebrow">YOUR LEARNING PATH</div><h2>Course Curriculum</h2><p>Follow the levels in order, or choose a lesson to explore.</p></div><div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search lessons..."></div></div><div class="level-tabs" id="levelTabs"></div><div class="lesson-grid" id="lessonGrid"></div></section>
+<section class="lesson-view" id="lessonView" hidden><div class="lesson-top"><button class="back-link" id="backBtn">← All lessons</button><span class="lesson-level" id="lessonLevel"></span></div><div class="lesson-title-row"><div><div class="eyebrow" id="lessonKicker">LESSON 01</div><h2 id="lessonTitle"></h2><p id="lessonSubtitle"></p></div><button class="complete-btn" id="completeBtn">✓ Mark complete</button></div><div class="lesson-layout"><article class="lesson-main"><section class="lesson-panel"><h3>🎯 Learning objectives</h3><ul id="objectives"></ul></section><section class="lesson-panel"><h3>📘 Understand the concept</h3><div id="explanation" class="prose"></div></section><section class="lesson-panel"><div class="panel-title"><div><h3>🧩 Build it step by step</h3><p>Scratch-style block visualisation — follow the stack from top to bottom.</p></div><span class="real-block-label">BLOCK STACK</span></div><div class="block-workspace" id="blockWorkspace"></div><div class="block-note" id="blockNote"></div></section><section class="lesson-panel"><h3>🛠️ Your practical task</h3><div id="practical"></div></section><section class="lesson-panel lesson-project-panel"><div class="lesson-project-heading"><div><span class="eyebrow">LEARN BY MAKING</span><h3>🚀 Projects for this lesson</h3><p>သင်ခန်းစာနဲ့ တိုက်ရိုက်သက်ဆိုင်တဲ့ mini projects ၂ ခု</p></div><span class="project-count-pill">2 PROJECTS</span></div><div class="lesson-project-grid" id="lessonProjectGrid"></div></section><section class="lesson-panel"><h3>⚠️ Common mistakes & fixes</h3><div id="mistakes"></div></section><section class="lesson-panel quiz-panel"><h3>✍️ Quick knowledge check</h3><div id="quiz"></div><button class="primary-btn" id="checkQuiz">Check my answers →</button><div id="quizFeedback" aria-live="polite"></div></section></article><aside class="lesson-aside"><div class="aside-card"><h4>LESSON CHECKLIST</h4><div id="checklist"></div></div><div class="aside-card next-card"><h4>KEEP PRACTISING</h4><p>Open the Scratch editor and recreate the blocks yourself.</p><a href="https://scratch.mit.edu/projects/editor/" target="_blank" rel="noopener">Open Scratch Editor ↗</a></div><div class="aside-card"><h4>YOUR PROGRESS</h4><div class="big-progress" id="lessonProgress">0%</div><div class="progress-line"><span id="lessonProgressBar"></span></div><small id="lessonProgressText">0 of 38 lessons complete</small></div></aside></div><div class="lesson-footer"><button class="secondary-btn" id="prevBtn">← Previous lesson</button><button class="primary-btn" id="nextBtn">Next lesson →</button></div></section>
+<section class="practice-hub" id="practiceHub">
+ <div class="section-heading practice-heading"><div><div class="eyebrow">PRACTISE BY BUILDING</div><h2>Creative Practice Studio</h2><p>Extra guided exercises, shape drawing challenges and small games. Each activity includes the block recipe, steps, expected result and a challenge.</p></div><div class="practice-count"><b id="exerciseDoneCount">0</b><small>activities completed</small></div></div>
+ <div class="practice-toolbar"><div class="practice-filters" id="practiceFilters"></div><input id="practiceSearch" type="search" placeholder="Search shapes, games or skills..."></div>
+ <div class="exercise-grid" id="exerciseGrid"></div>
+ <div class="project-showcase"><div class="eyebrow">PUT YOUR SKILLS TOGETHER</div><h2>Mini Project Workshop</h2><p>Build a complete mini game or interactive project from a blank Scratch project.</p><div class="project-grid" id="projectGrid"></div></div>
+</section>
+
+<section class="exam-hub" id="examHub">
+ <div class="section-heading"><div><div class="eyebrow">CHECK YOUR CODING SKILLS</div><h2>Scratch 3.0 Exams & Assessments</h2><p>15 complete exam sets from Beginner to Advanced. Practise, review mistakes and improve step by step.</p></div><div class="exam-score-card"><b id="examBest">—</b><small>Overall best</small></div></div>
+ <div class="exam-intro-grid">
+  <article><span>🏅</span><h3>15 Full Exam Sets</h3><p>20 questions · 100 marks · 30 minutes per set</p><button class="primary-btn" id="viewExams">Choose an exam →</button></article>
+  <article><span>🧩</span><h3>Block Order Challenge</h3><p>Arrange blocks in the correct sequence and practise coding logic.</p><button class="secondary-btn" id="startOrder">Start challenge →</button></article>
+  <article><span>⚡</span><h3>Quick Practice</h3><p>Mixed revision questions with immediate answer explanations.</p><button class="secondary-btn" id="startQuick">Start practice →</button></article>
+ </div>
+ <div class="exam-set-heading"><div><h3>Exam Library · စာမေးပွဲ ၁၅ စုံ</h3><p>Choose a topic set. Completed scores are saved in this browser.</p></div><span class="exam-set-total">15 SETS</span></div>
+ <div id="examSetGrid" class="exam-set-grid"></div>
+ <div id="examArea" class="exam-area" hidden></div>
+</section>
+<footer><img src="assets/logo.png" alt=""/><div><b>HOUSE OF J&S COMPUTER TRAINING CENTER</b><small>Learn today. Create tomorrow.</small></div><span>Scratch 3.0 Learning Portal</span></footer>
+</main></div><script src="app.js"></script><script src="extras.js"></script><script src="exam-bank.js"></script><script src="exam.js"></script><script src="auth.js"></script><script src="lesson-projects.js"></script><script src="portal-navigation.js"></script></body></html>
